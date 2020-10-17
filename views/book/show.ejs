@@ -1,0 +1,57 @@
+<%- include('../partials/header'); %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="img-thumbnail">
+                <img class="img-responsive"  src="<%= book.image %>">
+                <div class="caption-full">
+                    <h4 class="text-right">$10.00</h4>
+                    <h4><a><%= book.name %></a></h4>
+                    <p><%= book.description %></p>
+                    <p>
+                        <em>Submitted By <%= book.author.username %></em>
+                    </p>
+                    <% if(currentUser &&  book.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-warning btn-sm" href="/books/<%= book._id %>/edit">Edit</a>
+                        <form id="delete-form" action="/books/<%= book._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Comments</h5>
+                        <a id="comment" class="btn btn-success btn-sm" href="/books/<%= book._id %>/comments/new">Add New Comment</a>
+                    </div>
+                    
+                    <div class="card-body">
+                        <!-- <a class="btn btn-success btn-sm" href="/books/<%= book._id %>/comments/new">Add New Comment</a> -->
+                        <hr>
+                        <% book.comments.forEach((comment)=>{ %>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <strong><%= comment.author.username %></strong>
+                                    <span class="text-right">10 days ago</span>
+                                    <p>
+                                        <%= comment.text %> 
+                                    </p>
+                                    <% if(currentUser &&  comment.author.id.equals(currentUser._id)){ %>
+                                        <a class="btn btn-sm btn-warning" 
+                                        href="/books/<%= book._id %>/comments/<%= comment._id%>/edit">Edit</a>
+                                        <form id="delete-form" action="/books/<%=book._id %>/comments/<%=comment._id %>?_method=DELETE" method="POST">
+                                            <input type="submit" class="btn btn-sm btn-danger" value="Delete">
+                                        </form>
+                                    <% } %>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+             </div>
+        </div>
+    </div>
+</div>
+                
+                
+                <%- include('../partials/footer'); %>

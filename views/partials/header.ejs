@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>header</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/app.css">
+    <link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark static-top">
+            <div class="container py-0">
+              <a class="navbar-brand py-0 text-white" href="/">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                Home
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                  
+                  <% if(!currentUser){ %>
+                  <li class="nav-item">
+                    <a class="nav-link py-0 text-white" href="/login">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link py-0 text-white" href="/register">Signup</a>
+                  </li>
+                  <% }else{ %>
+                <a class="text-white" href="#">Signed in as <%= currentUser.username %>
+                  <i class="fa fa-user-circle" aria-hidden="true"></i>
+                </a>
+                  <li class="nav-item">
+                    <a class="nav-link py-0 text-white" href="/logout">Logout</a>
+                  </li>
+                  <% } %>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+
+
+
+    <div class="container">
+        <% if(error && error.length >0){ %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+        <% } %>
+        <% if(success && success.length >0){ %>
+        <div class="alert alert-success" role="alert">
+            <%= success %>
+        </div>
+        <% } %>
+    </div>
+
+    
+
+    

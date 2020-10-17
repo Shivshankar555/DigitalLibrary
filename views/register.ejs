@@ -1,0 +1,20 @@
+<%- include("partials/header") %>
+
+<div class="container">
+    <h1>Sign up</h1>
+    <form action="/register" method="POST">
+        <div class="form-group">
+            <label for="Username">Username</label>
+            <input class="form-control" type="text" name="username" placeholder="username">
+        </div>
+        <div class="form-group">
+            <label for="Password">Password</label>
+            <input class="form-control" type="password" name="password" placeholder="password">
+        </div>
+        
+        <button class="btn btn-primary">submit</button>
+    </form>
+</div>
+
+
+<%- include("partials/footer") %>

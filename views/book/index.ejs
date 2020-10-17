@@ -1,0 +1,45 @@
+<%- include('../partials/header'); -%>
+
+
+
+<div class="container">
+
+    <header class="jumbotron">
+        <div class="container">
+            <h1>“If you don’t like to read, you haven’t found the right book.”
+                <h4>– J.K. Rowling.</h4>
+            </h1>
+            <div class="d-flex">
+                <div class="align-self-start mr-auto">
+                    <a class="btn btn-primary btn-lg" href="/new/books">Add new books</a>
+                </div>
+            </div>
+               
+        </div>
+    </header>
+    
+    <div class="row text-center">
+
+        <% books.forEach((book)=>{ %>
+    
+            <div class="col-md-3 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="<%= book.image %>" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= book.name %></h5>
+                        <a href="/books/<%= book._id %>" class="btn btn-info ">More Info</a>
+                    </div>
+                  </div>
+            </div>
+    
+            <% }); %>
+
+    </div>
+</div>
+
+
+
+   
+
+
+<%- include('../partials/footer'); -%>
